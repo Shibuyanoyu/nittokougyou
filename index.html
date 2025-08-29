@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有限会社日豊工業社 | 大分県別府市の総合建設会社</title>
+    <!-- Google Fontsの読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSSリセット */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px; /* ヘッダーの高さ分 */
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(30,60,114,0.5), rgba(42,82,152,0.5));
+            z-index: 2;
+        }
+        
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+        }
+
+        /* 会社概要セクション */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .company-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .company-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            min-width: 120px;
+        }
+
+        /* 事業内容セクション */
+        .services {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* お問い合わせセクション */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white; /* 文字色を白に変更 */
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .phone-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff8e53;
+            text-decoration: none;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        .phone-number:hover {
+            color: #ff6b6b;
+        }
+
+        /* フッター */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* スクロールアニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">有限会社 日豊工業社</a>
+            <ul class="nav-menu">
+                <li><a href="#about">会社概要</a></li>
+                <li><a href="#services">事業内容</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" alt="建設現場" class="hero-bg-image">
+        <div class="hero-content">
+            <h1>信頼と技術で未来を築く</h1>
+            <p>大分県別府市を拠点とした総合建設会社として、土木工事から水道施設工事まで幅広く対応</p>
+            <a href="#contact" class="cta-button">お問い合わせ</a>
+        </div>
+    </section>
+
+    <!-- 会社概要セクション -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">会社概要</h2>
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p>有限会社日豊工業社は、大分県別府市を拠点として、土木工事をはじめとする総合建設業を営んでいます。長年にわたり培ってきた確かな技術力と豊富な経験で、地域のインフラ整備に貢献してまいりました。</p>
+                    <br>
+                    <p>お客様のニーズに応える高品質な施工を提供し、安全で安心な社会基盤づくりに取り組んでおります。どのようなご要望にも、迅速かつ丁寧に対応させていただきます。</p>
+                </div>
+                <div class="company-info fade-in">
+                    <h3>会社情報</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">会社名</span>
+                            <span>有限会社日豊工業社</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">代表者</span>
+                            <span>光永 竜也</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">所在地</span>
+                            <span>〒874-0831<br>大分県別府市大字南立石657</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">電話番号</span>
+                            <span>0977-23-8471</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">資本金</span>
+                            <span>7,000千円</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">許可番号</span>
+                            <span>大分県知事許可 第010518号</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 事業内容セクション -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">事業内容</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3>土木工事</h3>
+                    <p>インフラ整備の基盤となる土木工事を幅広く手がけています。</p>
+                    <ul class="service-features">
+                        <li>河川工事・治山工事</li>
+                        <li>トンネル工事・橋梁工事</li>
+                        <li>土地造成工事</li>
+                        <li>下水道管埋没工事</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>とび・土工工事</h3>
+                    <p>専門的な技術と安全管理で、高所作業や基礎工事を行います。</p>
+                    <ul class="service-features">
+                        <li>高所作業全般</li>
+                        <li>基礎工事</li>
+                        <li>解体工事</li>
+                        <li>足場設置工事</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>鋼構造物工事</h3>
+                    <p>鉄骨構造物の設計・製作・施工を一貫して行います。</p>
+                    <ul class="service-features">
+                        <li>鉄骨工事・橋梁工事</li>
+                        <li>鉄塔工事</li>
+                        <li>貯蔵用タンク設置</li>
+                        <li>水門設置工事</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>舗装工事</h3>
+                    <p>アスファルトからコンクリートまで、各種舗装工事に対応。</p>
+                    <ul class="service-features">
+                        <li>アスファルト舗装</li>
+                        <li>コンクリート舗装</li>
+                        <li>ブロック舗装</li>
+                        <li>路盤築造工事</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>しゅんせつ工事</h3>
+                    <p>河川や港湾の底をさらい、航路確保や治水を行います。</p>
+                    <ul class="service-features">
+                        <li>ポンプしゅんせつ</li>
+                        <li>グラブしゅんせつ</li>
+                        <li>ダムしゅんせつ</li>
+                        <li>しゅんせつロボット工事</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>塗装工事・水道施設工事</h3>
+                    <p>建物の保護から水道インフラまで幅広く対応します。</p>
+                    <ul class="service-features">
+                        <li>外壁・屋根塗装</li>
+                        <li>防水塗装</li>
+                        <li>水道施設工事</li>
+                        <li>配管工事</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title fade-in">お問い合わせ</h2>
+                <p class="fade-in">ご質問やお見積りのご依頼など、お気軽にお問い合わせください。</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <h3>お電話でのお問い合わせ</h3>
+                        <p>営業時間: 平日 8:00〜17:00</p>
+                        <a href="tel:0977-23-8471" class="phone-number">0977-23-8471</a>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <h3>所在地</h3>
+                        <p>〒874-0831<br>大分県別府市大字南立石657</p>
+                        <p>代表者: 光永 竜也</p>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <h3>許可・資格</h3>
+                        <p>建設業許可番号</p>
+                        <p><strong>大分県知事許可 第010518号</strong></p>
+                        <p>資本金: 7,000千円</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 有限会社日豊工業社 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // スクロールアニメーション
+        function handleScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top < viewHeight * 0.85) { // 画面の85%に入ったら表示
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+
+    </script>
+</body>
+</html>
